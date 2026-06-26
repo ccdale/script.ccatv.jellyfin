@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <category label="General">
+    <setting id="ccatv_base_url" type="string" label="ccatv Web API URL" default="http://druidmedia2:5000" />
+    <setting id="ccatv_web_token" type="string" label="ccatv Web Bearer token" option="hidden" default="" />
+    <setting id="recordings_root" type="string" label="Expected ccatv recordings root" default="/mnt/nas/ccatv" />
+    <setting id="movies_root" type="string" label="Jellyfin movies root" default="/mnt/nas/Video/films" />
+    <setting id="tv_root_comedy" type="string" label="Jellyfin TV comedy root" default="/mnt/nas/Video/comedy" />
+    <setting id="tv_root_drama" type="string" label="Jellyfin TV drama root" default="/mnt/nas/Video/drama" />
+    <setting id="require_recording_id_match" type="bool" label="Require match to ccatv recording list" default="false" />
+  </category>
+</settings>

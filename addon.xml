@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="script.ccatv.jellyfin" name="ccatv to Jellyfin" version="0.1.0" provider-name="ccdale">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+  </requires>
+
+  <extension point="kodi.context.item">
+    <menu id="kodi.core.main">
+      <item library="context.py">
+        <label>Move recording to Jellyfin</label>
+        <visible>String.StartsWith(ListItem.FileNameAndPath,/mnt/nas/ccatv/)</visible>
+      </item>
+    </menu>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Move ccatv recordings into Jellyfin movie/TV folder layouts.</summary>
+    <description lang="en_GB">Kodi context menu addon that identifies ccatv recordings from filename/output path, prompts for movie or TV naming, and moves the recording with all same-stem companion files (including NFO/comskip sidecars) to Jellyfin-friendly destinations.</description>
+    <platform>linux</platform>
+    <license>MIT</license>
+    <source>https://github.com/ccdale/script.ccatv.jellyfin</source>
+  </extension>
+</addon>
