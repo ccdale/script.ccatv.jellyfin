@@ -6,6 +6,9 @@ import re
 import shutil
 
 
+_LEADING_ARTICLES = ("a ", "an ", "the ")
+
+
 @dataclass(frozen=True, slots=True)
 class MovePlan:
     media_type: str
@@ -22,11 +25,32 @@ def sanitize_component(value: str, fallback: str) -> str:
     return normalized or fallback
 
 
+def _movie_sort_key(title: str) -> str:
+    lowered = title.lower().strip()
+    for article in _LEADING_ARTICLES:
+        if lowered.startswith(article):
+            stripped = lowered[len(article):].strip()
+            if stripped:
+                return stripped
+    return lowered
+
+
+def _movie_letter_folder(title: str) -> str:
+    key = _movie_sort_key(title)
+    if not key:
+        return "#"
+    first = key[0].upper()
+    if "A" <= first <= "Z":
+        return first
+    return "#"
+
+
 def build_movie_destination(*, movies_root: Path, title: str, year: int, source_path: Path) -> Path:
     safe_title = sanitize_component(title, fallback="Untitled")
+    letter_folder = _movie_letter_folder(safe_title)
     folder = f"{safe_title} ({year})"
     filename = f"{safe_title} ({year}){source_path.suffix}"
-    return movies_root / folder / filename
+    return movies_root / letter_folder / folder / filename
 
 
 def build_tv_destination(

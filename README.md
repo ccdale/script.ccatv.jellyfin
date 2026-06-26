@@ -12,11 +12,13 @@ Kodi context-menu addon that moves ccatv recording files into Jellyfin-friendly 
   - For TV: destination root (`comedy` or `drama`) and season/episode numbers
 - Moves the selected recording file and all same-stem sidecars together
   - Includes `.nfo`, `.edl`, `.txt`, and other same-stem files (for comskip outputs)
+- Movies are placed under an A-Z letter folder, ignoring leading articles (`a`, `an`, `the`)
+  - Example: `The Prisoner of Zenda (1937)` -> `.../Films/P/The Prisoner of Zenda (1937)/`
 
 ## Default paths
 
 - ccatv source root: `/mnt/nas/ccatv`
-- Jellyfin movies: `/mnt/nas/Video/films`
+- Jellyfin movies: `/mnt/nas/Video/Films`
 - Jellyfin TV roots:
   - `/mnt/nas/Video/comedy`
   - `/mnt/nas/Video/drama`
